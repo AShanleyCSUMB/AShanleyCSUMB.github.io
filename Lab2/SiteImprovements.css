@@ -1,0 +1,11 @@
+body{
+    font-family: "Verdana";
+    background-image: url("https://umbc.edu/wp-content/uploads/2024/04/file-20240327-24-t22ox3.jpg"); /*site with OG image */
+    background-repeat: no-repeat; /* Prevents the image from tiling */
+    background-size: cover; /* Stretches the image to cover the entire container */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+.container {
+  text-align: center;
+  justify-content: center; /* Centers content vertically */
+}
