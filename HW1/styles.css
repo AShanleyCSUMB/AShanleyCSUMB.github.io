@@ -1,0 +1,260 @@
+/* ===== Base ===== */
+:root {
+  --bg: #0b1020;
+  --panel: #121a33;
+  --text: #eef1ff;
+  --muted: #b9c0ff;
+  --accent: #7aa2ff;
+  --border: rgba(255, 255, 255, 0.14);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  background: radial-gradient(900px 400px at 20% 0%, rgba(122, 162, 255, 0.25), transparent 60%),
+              radial-gradient(900px 400px at 80% 10%, rgba(185, 192, 255, 0.18), transparent 55%),
+              var(--bg);
+  color: var(--text);
+}
+
+/* ===== Utilities ===== */
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 1.25rem 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+  padding: 0.75rem 1rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+}
+
+/* ===== Header / Nav ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  background: rgba(11, 16, 32, 0.72);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-row {
+  display: flex;               /* Flexbox requirement */
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;                   /* (new property option) */
+}
+
+.brand {
+  display: flex;               /* Flexbox */
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(122, 162, 255, 0.18);
+  border: 1px solid var(--border);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;              /* Flexbox */
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid transparent;
+}
+
+.nav-list a:hover {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-list a.active {
+  border-color: rgba(122, 162, 255, 0.6);
+  background: rgba(122, 162, 255, 0.12);
+}
+
+/* ===== Cards / Layout ===== */
+.card {
+  background: rgba(18, 26, 51, 0.82);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1.1rem 1.1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); /* (new property option) */
+}
+
+.grid {
+  display: flex;              /* Flexbox */
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.grid > .card {
+  flex: 1 1 280px;
+}
+
+.hero {
+  display: flex;              /* Flexbox */
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-text {
+  flex: 1 1 420px;
+}
+
+.hero-figure {
+  flex: 1 1 320px;
+  margin: 0;
+}
+
+/* ===== Typography ===== */
+h2, h3 {
+  margin-top: 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:focus {
+  outline: 2px solid rgba(122, 162, 255, 0.65);
+  outline-offset: 2px;
+}
+
+dl {
+  margin: 0;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin: 0 0 0.75rem 0;
+  color: var(--muted);
+}
+
+/* ===== Figures / SVG ===== */
+figure {
+  margin: 0;
+}
+
+.caption {
+  margin: 0 0 0.5rem 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.svg rect,
+.svg path {
+  stroke: rgba(255, 255, 255, 0.75);
+  fill: rgba(122, 162, 255, 0.10);
+  stroke-width: 2;
+}
+
+.svg text {
+  fill: var(--text);
+  font-size: 16px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.sources {
+  padding-left: 1.1rem;
+}
+
+details {
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  padding: 0.75rem;
+  border-radius: 1rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 1.25rem;
+  background: rgba(11, 16, 32, 0.6);
+}
+
+.footer-row {
+  display: flex;             /* Flexbox */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-footer p {
+  margin: 0.5rem 0;
+}

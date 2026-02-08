@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Process Scheduling</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">OS</span>
+        <div>
+          <h1 class="site-title">Process Scheduling</h1>
+          <p class="tagline">How the OS shares the CPU</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html">Overview</a></li>
+          <li><a class="active" href="scheduling.html">Process Scheduling</a></li>
+          <li><a href="memory.html">Virtual Memory</a></li>
+          <li><a href="filesystem.html">File Systems</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h2>Why Scheduling Matters</h2>
+      <p>
+        The CPU can only execute one instruction stream per core at a time, but many processes may be ready to run.
+        The scheduler chooses which process gets CPU time next. A good policy improves responsiveness (apps feel snappy),
+        fairness (no starvation), and throughput (more work completed).
+      </p>
+
+      <figure>
+        <figcaption class="caption">Graphic: simplified round-robin time slices</figcaption>
+        <svg class="svg" viewBox="0 0 520 220" role="img" aria-label="Timeline of round-robin scheduling with time slices">
+          <rect x="30" y="90" width="120" height="40" rx="10"></rect>
+          <text x="90" y="115" text-anchor="middle">P1</text>
+
+          <rect x="160" y="90" width="120" height="40" rx="10"></rect>
+          <text x="220" y="115" text-anchor="middle">P2</text>
+
+          <rect x="290" y="90" width="120" height="40" rx="10"></rect>
+          <text x="350" y="115" text-anchor="middle">P3</text>
+
+          <rect x="420" y="90" width="70" height="40" rx="10"></rect>
+          <text x="455" y="115" text-anchor="middle">P1</text>
+
+          <path d="M30 150 H490"></path>
+          <text x="30" y="175">time →</text>
+        </svg>
+      </figure>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Common Scheduling Algorithms</h3>
+        <ul>
+          <li><strong>FCFS (First-Come, First-Served):</strong> runs jobs in arrival order. Simple, but a long job can delay everyone behind it.</li>
+          <li><strong>SJF (Shortest Job First):</strong> prefers the smallest CPU bursts, often lowering average waiting time, but it needs estimates and can starve long jobs.</li>
+          <li><strong>Round Robin:</strong> each ready process gets a small “time slice” repeatedly; improves interactivity but adds context-switch overhead.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>What the OS Measures</h3>
+        <ul>
+          <li><strong>Waiting time:</strong> time spent ready but not running.</li>
+          <li><strong>Turnaround time:</strong> total time from arrival to completion.</li>
+          <li><strong>Response time:</strong> how quickly the process first gets CPU time (important for UI apps).</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Extra Detail</h3>
+        <details>
+          <summary>Preemptive vs. non-preemptive</summary>
+          <p>
+            In non-preemptive scheduling, a running process keeps the CPU until it blocks or finishes.
+            In preemptive scheduling, the OS can interrupt a running process (for example, when its time slice ends)
+            to keep the system responsive and fair.
+          </p>
+        </details>
+      </article>
+    </section>
+
+    <section class="card">
+      <h3>Sources (links)</h3>
+      <p class="muted">Information was paraphrased from these references:</p>
+      <ul class="sources">
+        <li><a href="https://www.geeksforgeeks.org/operating-systems/comparison-of-different-cpu-scheduling-algorithms-in-os/" target="_blank" rel="noopener">GeeksforGeeks: CPU Scheduling Algorithms</a></li>
+        <li><a href="https://openosorg.github.io/openos/" target="_blank" rel="noopener">OpenOS: Intro OS textbook (scheduling sections)</a></li>
+        <li><a href="https://www.csprimer.in/articles/os-cpu-scheduling" target="_blank" rel="noopener">CSPrimer: CPU Scheduling Overview</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p><a href="index.html">Overview</a> • <a href="memory.html">Next: Virtual Memory</a></p>
+      <p>CS Mini-Site: Operating Systems</p>
+    </div>
+  </footer>
+</body>
+</html>

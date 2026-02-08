@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Virtual Memory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">OS</span>
+        <div>
+          <h1 class="site-title">Virtual Memory</h1>
+          <p class="tagline">Paging, page tables, and page faults</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="scheduling.html">Process Scheduling</a></li>
+          <li><a class="active" href="memory.html">Virtual Memory</a></li>
+          <li><a href="filesystem.html">File Systems</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h2>The Big Idea</h2>
+      <p>
+        Virtual memory lets each process act like it has a large, private address space even when physical RAM is limited.
+        The OS and hardware translate virtual addresses into physical addresses using data structures such as page tables.
+        This makes multitasking easier and helps isolate programs from each other.
+      </p>
+
+      <figure>
+        <figcaption class="caption">Graphic: mapping virtual pages to physical frames</figcaption>
+        <svg class="svg" viewBox="0 0 520 220" role="img" aria-label="Diagram of virtual pages mapped to physical frames">
+          <rect x="30" y="40" width="160" height="140" rx="12"></rect>
+          <text x="110" y="30" text-anchor="middle">Virtual Pages</text>
+          <text x="110" y="75" text-anchor="middle">VP0</text>
+          <text x="110" y="105" text-anchor="middle">VP1</text>
+          <text x="110" y="135" text-anchor="middle">VP2</text>
+          <text x="110" y="165" text-anchor="middle">VP3</text>
+
+          <rect x="330" y="40" width="160" height="140" rx="12"></rect>
+          <text x="410" y="30" text-anchor="middle">Physical Frames</text>
+          <text x="410" y="75" text-anchor="middle">PF5</text>
+          <text x="410" y="105" text-anchor="middle">PF1</text>
+          <text x="410" y="135" text-anchor="middle">PF9</text>
+          <text x="410" y="165" text-anchor="middle">PF2</text>
+
+          <path d="M190 75 C250 75, 270 75, 330 75"></path>
+          <path d="M190 105 C250 105, 270 105, 330 105"></path>
+          <path d="M190 135 C250 135, 270 135, 330 135"></path>
+          <path d="M190 165 C250 165, 270 165, 330 165"></path>
+
+          <text x="260" y="205" text-anchor="middle">Page table stores these mappings</text>
+        </svg>
+      </figure>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Paging</h3>
+        <p>
+          Paging divides memory into fixed-size chunks. Virtual memory is split into <em>pages</em>, and physical RAM is split
+          into <em>frames</em>. A page table tells the hardware where each virtual page currently lives in physical memory.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Page Faults</h3>
+        <p>
+          If a process tries to use a page that is not currently in RAM, the CPU triggers a page fault. The OS then loads
+          that page from storage (like an SSD swap area or backing file) into a free frame, updates the page table, and
+          restarts the instruction.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Why It Helps</h3>
+        <ul>
+          <li>Lets programs use more memory than RAM by moving inactive pages to storage.</li>
+          <li>Improves isolation: each process can have a separate address space.</li>
+          <li>Enables sharing: some pages (like shared libraries) can be mapped into multiple processes.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h3>Sources (links)</h3>
+      <p class="muted">Information was paraphrased from these references:</p>
+      <ul class="sources">
+        <li><a href="https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/9_VirtualMemory.html" target="_blank" rel="noopener">UIC Course Notes: Virtual Memory</a></li>
+        <li><a href="https://openosorg.github.io/openos/textbook/mm/virt-paging.html" target="_blank" rel="noopener">OpenOS Textbook: Paging</a></li>
+        <li><a href="https://www.geeksforgeeks.org/operating-systems/paging-in-operating-system/" target="_blank" rel="noopener">GeeksforGeeks: Paging in OS</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p><a href="scheduling.html">Back: Scheduling</a> • <a href="filesystem.html">Next: File Systems</a></p>
+      <p>CS Mini-Site: Operating Systems</p>
+    </div>
+  </footer>
+</body>
+</html>
