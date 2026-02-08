@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operating Systems Overview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">OS</span>
+        <div>
+          <h1 class="site-title">Operating Systems</h1>
+          <p class="tagline">A 4-page CS mini-site</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="active" href="index.html">Overview</a></li>
+          <li><a href="scheduling.html">Process Scheduling</a></li>
+          <li><a href="memory.html">Virtual Memory</a></li>
+          <li><a href="filesystem.html">File Systems</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero card">
+      <div class="hero-text">
+        <h2>What an Operating System Does</h2>
+        <p>
+          An operating system (OS) is the core software layer that helps applications use hardware safely and efficiently.
+          Instead of every program directly controlling the CPU, RAM, and storage, the OS coordinates access to those
+          resources and offers consistent services like running programs, managing memory, and organizing files.
+        </p>
+        <p>
+          Modern OS designs emphasize fairness, isolation, and performance: many programs share the machine at once,
+          but each process should be protected from others while still getting enough CPU time and memory to run smoothly.
+        </p>
+      </div>
+
+      <figure class="hero-figure">
+        <figcaption class="caption">Graphic: OS sits between apps and hardware</figcaption>
+        <svg class="svg" viewBox="0 0 520 220" role="img" aria-label="Diagram showing applications, operating system, and hardware layers">
+          <rect x="20" y="20" width="480" height="50" rx="12"></rect>
+          <text x="260" y="52" text-anchor="middle">Applications (Browser, Game, Editor…)</text>
+
+          <rect x="20" y="90" width="480" height="60" rx="12"></rect>
+          <text x="260" y="125" text-anchor="middle">Operating System (Kernel + Services)</text>
+
+          <rect x="20" y="170" width="480" height="30" rx="12"></rect>
+          <text x="260" y="192" text-anchor="middle">Hardware (CPU • RAM • Disk • Devices)</text>
+
+          <path d="M260 70 L260 90"></path>
+          <path d="M260 150 L260 170"></path>
+        </svg>
+      </figure>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h3>Core Responsibilities</h3>
+        <ul>
+          <li><strong>Process management:</strong> starts programs, switches between them, and ends them cleanly.</li>
+          <li><strong>Memory management:</strong> tracks RAM use and provides the illusion of “more memory” via virtual memory.</li>
+          <li><strong>File system management:</strong> stores and retrieves data using folders, permissions, and metadata.</li>
+          <li><strong>Device and I/O management:</strong> coordinates printers, disks, network cards, keyboards, and more.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>How This Site Is Organized</h3>
+        <p>Use the navigation links above to explore three common OS subtopics:</p>
+        <ol>
+          <li><a href="scheduling.html">Process Scheduling</a>: how the OS decides which process runs next.</li>
+          <li><a href="memory.html">Virtual Memory</a>: paging, page tables, and page faults.</li>
+          <li><a href="filesystem.html">File Systems</a>: files, directories, and metadata like inodes.</li>
+        </ol>
+      </article>
+
+      <article class="card">
+        <h3>Quick Vocabulary</h3>
+        <dl>
+          <dt>Process</dt>
+          <dd>A running program with its own state (code, memory, open files, etc.).</dd>
+          <dt>Kernel</dt>
+          <dd>The privileged core of the OS that manages hardware resources and enforces rules.</dd>
+          <dt>System call</dt>
+          <dd>A controlled way for an application to request OS services (like reading a file).</dd>
+        </dl>
+      </article>
+    </section>
+
+    <section class="card">
+      <h3>Sources (links)</h3>
+      <p class="muted">Information was paraphrased from these references:</p>
+      <ul class="sources">
+        <li><a href="https://www.tutorialspoint.com/operating_system/os_overview.htm" target="_blank" rel="noopener">TutorialsPoint: OS Overview</a></li>
+        <li><a href="https://www.geeksforgeeks.org/operating-systems/operating-systems/" target="_blank" rel="noopener">GeeksforGeeks: Operating Systems</a></li>
+        <li><a href="https://openosorg.github.io/openos/" target="_blank" rel="noopener">Introduction to Operating Systems (OpenOS textbook site)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>CS Mini-Site: Operating Systems</p>
+      <p><a href="index.html">Back to Overview</a></p>
+    </div>
+  </footer>
+</body>
+</html>
