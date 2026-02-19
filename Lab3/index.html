@@ -1,98 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CSS Quiz</title>
-  <script src="https://unpkg.com/underscore@1.13.7/underscore-umd-min.js"></script>
-  <script src="js/script.js" defer></script>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.4; }
-    button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s ease;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Quiz</title>
+
+<script src="https://unpkg.com/underscore@1.13.7/underscore-umd-min.js"></script>
+<script src="js/script.js" defer></script>
+
+<style>
+body {
+  font-family: system-ui, Arial;
+  background-color: #f4f6f9;
+  margin: 20px;
+  line-height: 1.5;
 }
-    button:hover { background-color: #0056b3; }
-    h1 { text-align: center; }
-    .q { margin: 12px 0; }
-    .choices label { display: block; margin: 4px 0; }
-    #results { margin-top: 14px; font-weight: 600; }
-    .correct {
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.q {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.choices label {
+  display: inline-block;
+  margin: 4px 8px 4px 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.correct {
   background-color: #d4edda;
   border: 2px solid #28a745;
-  padding: 8px;
 }
 
 .incorrect {
   background-color: #f8d7da;
   border: 2px solid #dc3545;
-  padding: 8px;
 }
-  </style>
+
+#results {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+</style>
 </head>
+
 <body>
-  <h1>CSS Quiz</h1>
 
-  <div class="q" id="q1Container">
-    <div>1. What is the CSS property to set the font color?</div>
-    <!--<label for=""><input type="radio" name="q1" value="color"> color</label>
-    <label for=""><input type="radio" name = "q1" value="fontColor"> font-color</label>
-    <label for=""><input type="radio" name = "q1" value="textColor"> text-color</label>
-    <label for=""><input type="radio" name = "q1" value="fontColor2"> fontColor</label>
-    <label for=""><input type="radio" name = "q1" value="textColor2"> textColor</label>
-    <label for=""><input type="radio" name="q1" value="colour"> colour</label>-->
-    <div id="q1ChoicesDiv" class="choices"></div>
+<h1>CSS Quiz</h1>
+
+<div class="q" id="q1Container">
+  <div>1. What is the CSS property to set the font color?</div>
+  <div id="q1ChoicesDiv" class="choices"></div>
+  <img id="q1Img" width="20">
+</div>
+
+<div class="q" id="q2Container">
+  <div>2. What is a name given to a font size measurement based on the 13th letter?</div>
+  <input type="text" id="q2">
+  <img id="q2Img" width="20">
+</div>
+
+<div class="q" id="q3Container">
+  <div>3. Which CSS property controls the space between lines of text?</div>
+  <select id="q3">
+    <option value="" selected disabled>Choose...</option>
+    <option value="letter-spacing">letter-spacing</option>
+    <option value="line-height">line-height</option>
+    <option value="word-spacing">word-spacing</option>
+    <option value="text-indent">text-indent</option>
+  </select>
+  <img id="q3Img" width="20">
+</div>
+
+<div class="q" id="q4Container">
+  <div>4. What is the default value of opacity?</div>
+  <input type="number" id="q4" min="0" max="1" step="0.1">
+  <img id="q4Img" width="20">
+</div>
+
+<div class="q" id="q5Container">
+  <div>5. Select ALL valid display values:</div>
+  <div class="choices">
+    <label><input type="checkbox" name="q5" value="block"> block</label>
+    <label><input type="checkbox" name="q5" value="inline"> inline</label>
+    <label><input type="checkbox" name="q5" value="flex"> flex</label>
+    <label><input type="checkbox" name="q5" value="grid"> grid</label>
+    <label><input type="checkbox" name="q5" value="none"> none</label>
+    <label><input type="checkbox" name="q5" value="center"> center</label>
+    <label><input type="checkbox" name="q5" value="boxed"> boxed</label>
+    <label><input type="checkbox" name="q5" value="wrap"> wrap</label>
   </div>
+  <img id="q5Img" width="20">
+</div>
 
-  <div class="q" id="q2Container">
-    <label>
-      <div>2. What is a name given to a font size measurement based on the 13th letter of the alphabet? (Type your answer using lowercase letters.)</div>
-      <input type="text" id="q2" placeholder="Type your answer..." />
-    </label>
-  </div>
+<button id="submitBtn" type="button">Submit Quiz</button>
+<div id="results"></div>
 
-  <div class="q" id="q3Container">
-    <label>
-      <div>3. Which CSS property controls the space between lines of text?</div>
-      <select id="q3">
-        <option value="" selected disabled>Choose an answer…</option>
-        <option value="letter-spacing">letter-spacing</option>
-        <option value="line-height">line-height</option>
-        <option value="word-spacing">word-spacing</option>
-        <option value="text-indent">text-indent</option>
-      </select>
-    </label>
-  </div>
-
-  <div class="q" id="q4Container">
-    <label>
-      <div>4. What is the default value of the CSS <code>opacity</code> property?</div>
-      <input type="number" id="q4" min="0" max="1" step="0.1" placeholder="e.g., 1" />
-    </label>
-  </div>
-
-  <div class="q" id="q5Container">
-    <div>5. Select ALL valid values for the CSS <code>display</code> property:</div>
-    <div class="choices" id="q5ChoicesDiv">
-      <label><input type="checkbox" name="q5" value="block" /> block</label>
-      <label><input type="checkbox" name="q5" value="inline" /> inline</label>
-      <label><input type="checkbox" name="q5" value="flex" /> flex</label>
-      <label><input type="checkbox" name="q5" value="grid" /> grid</label>
-      <label><input type="checkbox" name="q5" value="none" /> none</label>
-
-      <label><input type="checkbox" name="q5" value="center" /> center</label>
-      <label><input type="checkbox" name="q5" value="boxed" /> boxed</label>
-      <label><input type="checkbox" name="q5" value="wrap" /> wrap</label>
-    </div>
-  </div>
-
-  <button id="submitBtn" type="button">Submit Quiz</button>
-  <div id="results" aria-live="polite"></div>
 </body>
 </html>
-
