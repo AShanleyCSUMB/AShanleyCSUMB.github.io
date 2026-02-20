@@ -3,33 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up Form</title>
+    <style>
+        #errorMsg {
+            color: red;
+        }
+        #usernameMsg {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <h1> Sign Up Form </h1>
 
 <fieldset>
 <legend>Sign Up</legend>
+
 First Name: <input type="text"><br> 
 Last Name: <input type="text"><br> 
 Email: <input type="text"><br> 
 Phone Number:<input type="text"><br><br>
-Zip Code: <input id="zipCodeInput" type="text"><br>
-City: <span id="cityDisplay"></span>
-<br>
-Latitude: 
-<br>
-Longitude:
-<br><br>
-State:  <select id = "stateSelection"></select><br>
-Select a County: <select></select><br>
 
-Desired Username: <input type="text"><br>
-Password: <input type="password"><br>
+Zip Code: <input id="zipCodeInput" type="text"><br>
+City: <span id="cityDisplay"></span><br>
+Latitude: <span id="latitudeDisplay"></span><br>
+Longitude: <span id="longitudeDisplay"></span><br><br>
+
+State:  <select id="stateSelection"></select><br>
+Select a County: <select id="countySelection"></select><br>
+
+Desired Username: <input id="usernameInput" type="text">
+<span id="usernameMsg"></span><br>
+
+Password: <input id="passwordInput" type="password"><br>
 Type Password Again: <input type="password"><br>
+
 <input type="submit" value="Sign up!">
+<div id="errorMsg"></div>
+
 </fieldset>
 
- <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
